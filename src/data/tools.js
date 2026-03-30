@@ -170,6 +170,14 @@ export const tools = [
 
   // ── CODE ─────────────────────────────────────────────────────
   {
+    id: 11, name: 'Claude.ai', category: 'code', icon: '🧠', vpn: true,
+    badgeRu: 'Бесплатный план', badgeEn: 'Free plan',
+    descRu: 'Один из лучших AI для написания кода и объяснения ошибок. Бесплатный план на сайте.',
+    descEn: 'One of the best AIs for writing code and explaining errors. Free plan on the website.',
+    tagsRu: ['любой язык', 'отладка', 'объяснение'], tagsEn: ['any language', 'debugging', 'explanation'],
+    url: 'https://claude.ai',
+  },
+  {
     id: 12, name: 'ChatGPT', category: 'code', icon: '💬', vpn: true,
     badgeRu: 'Бесплатно', badgeEn: 'Free',
     descRu: 'Пишет код на любом языке, объясняет ошибки, помогает с архитектурой.',
