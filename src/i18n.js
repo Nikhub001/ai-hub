@@ -45,6 +45,9 @@ export const t = {
       business: '💼 Бизнес',
       legal: '⚖️ Юридический',
       finance: '💰 Финансы',
+      content: '📱 Контент',
+      documents: '📄 Документы',
+      entertainment: '🎭 Развлечения',
     },
   },
   en: {
@@ -93,6 +96,9 @@ export const t = {
       business: '💼 Business',
       legal: '⚖️ Legal',
       finance: '💰 Finance',
+      content: '📱 Content',
+      documents: '📄 Documents',
+      entertainment: '🎭 Entertainment',
     },
   },
 }
