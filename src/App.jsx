@@ -197,7 +197,11 @@ export default function App() {
 
       {/* Categories */}
       <div className="sticky top-0 z-10 bg-gray-950/90 backdrop-blur-md border-b border-gray-800/50">
-        <div className="max-w-7xl mx-auto px-4 py-3 flex gap-2 overflow-x-auto" style={{scrollbarWidth:'none'}}>
+        <div
+          className="max-w-7xl mx-auto px-4 py-3 flex gap-2 overflow-x-auto"
+          style={{scrollbarWidth:'none'}}
+          onWheel={e => { e.preventDefault(); e.currentTarget.scrollLeft += e.deltaY }}
+        >
           {categories.map(cat => (
             <button
               key={cat.id}
