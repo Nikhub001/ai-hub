@@ -64,15 +64,7 @@ function ToolCard({ tool, lang, favorites, onToggleFav, isDark, likes, myLikes, 
           >
             {isFav ? '❤️' : '🤍'}
           </button>
-          <a
-            href={`https://t.me/share/url?url=${encodeURIComponent(tool.url)}&text=${encodeURIComponent('🤖 ' + tool.name + ' — бесплатный AI инструмент\n' + (tool.descRu || '') + '\n\nБольше бесплатных AI → https://hub-freeai.vercel.app')}`}
-            target="_blank"
-            rel="noopener noreferrer"
-            onClick={e => e.stopPropagation()}
-            className="text-gray-500 hover:text-blue-400 transition-colors text-base p-1"
-            aria-label="Share in Telegram"
-            title="Поделиться в Telegram"
-          >✈️</a>
+
 
         </div>
       </div>
@@ -522,6 +514,13 @@ export default function App() {
               >
                 👍 {likeCounts[selectedTool.id] || 0}
               </button>
+              <a
+                href={`https://t.me/share/url?url=${encodeURIComponent(selectedTool.url)}&text=${encodeURIComponent('🤖 ' + selectedTool.name + ' — бесплатный AI инструмент\n' + (selectedTool.descRu || '') + '\n\nБольше бесплатных AI → https://hub-freeai.vercel.app')}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-3 py-2.5 bg-blue-500/10 hover:bg-blue-500/20 border border-blue-500/30 text-blue-400 rounded-xl text-sm transition-all"
+                title="Поделиться в Telegram"
+              >✈️</a>
               <a
                 href={selectedTool.url}
                 target="_blank"
