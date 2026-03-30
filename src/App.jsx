@@ -73,14 +73,7 @@ function ToolCard({ tool, lang, favorites, onToggleFav, isDark, likes, myLikes, 
             aria-label="Share in Telegram"
             title="Поделиться в Telegram"
           >✈️</a>
-          <a
-            href={tool.url}
-            target="_blank"
-            rel="noopener noreferrer"
-            onClick={e => e.stopPropagation()}
-            className="text-gray-500 hover:text-purple-400 transition-colors text-base p-1"
-            aria-label="Open tool"
-          >↗</a>
+
         </div>
       </div>
       <p className={`text-sm leading-relaxed theme-muted ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
