@@ -255,7 +255,7 @@ export default function App() {
             </button>
           </div>
 
-          <div className="inline-flex items-center gap-2 bg-purple-900/40 border border-purple-700/40 rounded-full px-4 py-1.5 text-sm text-purple-300 mb-5">
+          <div className="inline-flex items-center gap-2 bg-purple-900/40 border border-purple-700/40 rounded-full px-4 py-1.5 text-sm text-purple-300 mb-5 mt-10 sm:mt-0">
             <span>⚡</span> {tr.tagline}
           </div>
           <h1 className="text-5xl sm:text-6xl font-black mb-3 bg-gradient-to-r from-white via-purple-300 to-pink-400 bg-clip-text text-transparent">
