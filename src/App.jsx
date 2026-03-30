@@ -518,9 +518,11 @@ export default function App() {
                 href={`https://t.me/share/url?url=${encodeURIComponent(selectedTool.url)}&text=${encodeURIComponent('🤖 ' + selectedTool.name + ' — бесплатный AI инструмент\n' + (selectedTool.descRu || '') + '\n\nБольше бесплатных AI → https://hub-freeai.vercel.app')}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="px-3 py-2.5 bg-blue-500/10 hover:bg-blue-500/20 border border-blue-500/30 text-blue-400 rounded-xl text-sm transition-all"
+                className="flex items-center gap-1.5 px-3 py-2.5 bg-[#229ED9]/10 hover:bg-[#229ED9]/20 border border-[#229ED9]/30 text-[#229ED9] rounded-xl text-sm font-medium transition-all"
                 title="Поделиться в Telegram"
-              >✈️</a>
+              >
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12L8.32 13.617l-2.96-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.828.942z"/></svg>
+              </a>
               <a
                 href={selectedTool.url}
                 target="_blank"
