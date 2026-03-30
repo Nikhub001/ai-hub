@@ -62,8 +62,7 @@ export default function App() {
   const [lang, setLang] = useState(() => localStorage.getItem('freeai_lang') || 'ru')
   const [noVpnOnly, setNoVpnOnly] = useState(false)
   const [favorites, setFavorites] = useState(() => JSON.parse(localStorage.getItem('freeai_favs') || '[]'))
-  const [subEmail, setSubEmail] = useState('')
-  const [subSubmitted, setSubSubmitted] = useState(false)
+
   const catsRef = useRef(null)
 
   const tr = t[lang]
@@ -122,10 +121,6 @@ export default function App() {
     window.open(pick.url, '_blank', 'noopener,noreferrer')
   }
 
-  const handleSubscribe = (e) => {
-    e.preventDefault()
-    if (subEmail.includes('@')) setSubSubmitted(true)
-  }
 
   return (
     <div className="min-h-screen bg-gray-950 text-white">
@@ -251,29 +246,20 @@ export default function App() {
         )}
       </div>
 
-      {/* Subscribe */}
+      {/* Suggest a tool */}
       <div className="max-w-xl mx-auto px-4 mb-12">
-        <div className="bg-gray-800/60 border border-gray-700/50 rounded-2xl p-6 text-center">
-          <h3 className="text-lg font-bold text-white mb-4">{tr.subscribeTitle}</h3>
-          {subSubmitted ? (
-            <p className="text-green-400">{tr.subscribeThanks}</p>
-          ) : (
-            <form onSubmit={handleSubscribe} className="flex gap-2">
-              <input
-                type="email"
-                value={subEmail}
-                onChange={e => setSubEmail(e.target.value)}
-                placeholder={tr.subscribePlaceholder}
-                className="flex-1 bg-gray-900/60 border border-gray-700/60 rounded-xl px-4 py-2.5 text-white placeholder-gray-500 focus:outline-none focus:border-purple-500/60 transition-all text-sm"
-              />
-              <button
-                type="submit"
-                className="px-5 py-2.5 bg-purple-600 hover:bg-purple-500 text-white font-semibold rounded-xl text-sm transition-all"
-              >
-                {tr.subscribeBtn}
-              </button>
-            </form>
-          )}
+        <div className="bg-gradient-to-br from-purple-900/30 to-blue-900/20 border border-purple-700/30 rounded-2xl p-6 text-center">
+          <div className="text-4xl mb-3">🤔</div>
+          <h3 className="text-lg font-bold text-white mb-2">{tr.suggestTitle}</h3>
+          <p className="text-gray-400 text-sm mb-5">{tr.suggestDesc}</p>
+          <a
+            href={`https://t.me/NikiMAl0?text=${encodeURIComponent(tr.suggestMsg)}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 px-6 py-3 bg-purple-600 hover:bg-purple-500 text-white font-semibold rounded-xl text-sm transition-all hover:shadow-lg hover:shadow-purple-500/30"
+          >
+            ✉️ {tr.suggestBtn}
+          </a>
         </div>
       </div>
 

@@ -20,6 +20,10 @@ export const t = {
     vpnBadge: 'Нужен VPN',
     vpnTooltip: 'Может быть недоступен в Беларуси без VPN',
     showVpn: 'Показать только без VPN',
+    suggestTitle: 'Не нашёл нужный AI?',
+    suggestDesc: 'Напиши нам — добавим любой бесплатный инструмент в каталог.',
+    suggestBtn: 'Написать нам',
+    suggestMsg: 'Привет! Хочу предложить AI инструмент для добавления на сайт hub-freeai.vercel.app: ',
     categories: {
       all: '✨ Все',
       image: '🖼️ Картинки',
@@ -71,6 +75,10 @@ export const t = {
     vpnBadge: 'VPN needed',
     vpnTooltip: 'May be unavailable in Belarus without VPN',
     showVpn: 'Show only VPN-free',
+    suggestTitle: "Don't see the AI you need?",
+    suggestDesc: 'Write to us — we will add any free tool to the catalog.',
+    suggestBtn: 'Contact us',
+    suggestMsg: 'Hi! I want to suggest an AI tool for hub-freeai.vercel.app: ',
     categories: {
       all: '✨ All',
       image: '🖼️ Images',
