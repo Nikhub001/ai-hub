@@ -63,10 +63,11 @@ export default function App() {
             <span>⚡</span> Только бесплатные инструменты
           </div>
           <h1 className="text-5xl sm:text-6xl font-black mb-4 bg-gradient-to-r from-white via-purple-200 to-purple-400 bg-clip-text text-transparent">
-            AI Hub
+            FreeAI
           </h1>
-          <p className="text-gray-400 text-lg max-w-xl mx-auto mb-8">
-            Все лучшие бесплатные AI инструменты в одном месте — картинки, код, музыка, видео и не только
+          <p className="text-xl font-semibold text-gray-300 mb-2">Все бесплатные AI инструменты в одном месте</p>
+          <p className="text-gray-500 text-base max-w-xl mx-auto mb-8">
+            Не знаешь какой AI использовать? Здесь собраны лучшие — для картинок, кода, музыки, видео и не только. Всё бесплатно.
           </p>
           {/* Search */}
           <div className="relative max-w-lg mx-auto">
@@ -126,7 +127,7 @@ export default function App() {
 
       {/* Footer */}
       <footer className="border-t border-gray-800/50 mt-12 py-8 text-center text-gray-600 text-sm">
-        <p>AI Hub — {tools.length} бесплатных инструментов 🚀</p>
+        <p>FreeAI — {tools.length} бесплатных AI инструментов 🚀</p>
       </footer>
     </div>
   )
