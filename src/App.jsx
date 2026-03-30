@@ -438,6 +438,9 @@ export default function App() {
       <footer className="mt-4 py-8 text-center text-gray-600 text-sm" style={{borderTop: '1px solid transparent', background: 'linear-gradient(#030712, #030712) padding-box, linear-gradient(to right, #7c3aed33, #3b82f633, #ec489933) border-box'}}>
         <p>{tr.footer(tools.length)}</p>
         <div className="flex justify-center gap-4 mt-3">
+          <Link to="/collections" className="text-gray-600 hover:text-purple-400 transition-colors text-xs">
+            {lang === 'ru' ? '✦ Коллекции' : '✦ Collections'}
+          </Link>
           <Link to="/about" className="text-gray-600 hover:text-purple-400 transition-colors text-xs">
             {lang === 'ru' ? 'О проекте' : 'About'}
           </Link>
