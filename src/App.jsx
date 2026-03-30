@@ -98,6 +98,8 @@ export default function App() {
   const [myLikes, setMyLikes] = useState(() => JSON.parse(localStorage.getItem('freeai_liked') || '[]'))
   const [sortByLikes, setSortByLikes] = useState(false)
   const [selectedTool, setSelectedTool] = useState(null)
+  const [displayCount, setDisplayCount] = useState(0)
+  const [showScrollTop, setShowScrollTop] = useState(false)
 
   const catsRef = useRef(null)
   const tr = t[lang]
@@ -121,6 +123,27 @@ export default function App() {
   useEffect(() => {
     localStorage.setItem('freeai_liked', JSON.stringify(myLikes))
   }, [myLikes])
+
+  // Animated counter
+  useEffect(() => {
+    const target = tools.length
+    const duration = 1500
+    const start = performance.now()
+    const tick = (now) => {
+      const progress = Math.min((now - start) / duration, 1)
+      const ease = 1 - Math.pow(1 - progress, 3)
+      setDisplayCount(Math.floor(ease * target))
+      if (progress < 1) requestAnimationFrame(tick)
+    }
+    requestAnimationFrame(tick)
+  }, [])
+
+  // Scroll to top button
+  useEffect(() => {
+    const handler = () => setShowScrollTop(window.scrollY > 400)
+    window.addEventListener('scroll', handler)
+    return () => window.removeEventListener('scroll', handler)
+  }, [])
 
   useEffect(() => {
     document.documentElement.classList.toggle('light', !isDark)
@@ -235,7 +258,11 @@ export default function App() {
             ✦ FreeAI
           </h1>
           <p className="text-xl font-semibold text-gray-300 mb-2">{tr.subtitle}</p>
-          <p className="text-gray-500 text-base max-w-xl mx-auto mb-8">{tr.desc}</p>
+          <p className="text-gray-500 text-base max-w-xl mx-auto mb-2">{tr.desc}</p>
+          <div className="inline-flex items-center gap-2 bg-gray-800/60 border border-gray-700/40 rounded-full px-5 py-2 mb-6">
+            <span className="text-2xl font-black bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">{displayCount}</span>
+            <span className="text-gray-400 text-sm">{lang === 'ru' ? 'бесплатных AI инструментов' : 'free AI tools'}</span>
+          </div>
 
           {/* VPN filter + Random */}
           <div className="flex justify-center gap-2 mb-4">
@@ -407,6 +434,15 @@ export default function App() {
       <footer className="mt-4 py-8 text-center text-gray-600 text-sm" style={{borderTop: '1px solid transparent', background: 'linear-gradient(#030712, #030712) padding-box, linear-gradient(to right, #7c3aed33, #3b82f633, #ec489933) border-box'}}>
         <p>{tr.footer(tools.length)}</p>
       </footer>
+
+      {/* Scroll to top */}
+      {showScrollTop && (
+        <button
+          onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+          className="fixed bottom-6 right-6 z-40 w-11 h-11 flex items-center justify-center rounded-full bg-purple-600 hover:bg-purple-500 text-white shadow-lg shadow-purple-500/30 transition-all hover:scale-110"
+          aria-label="Scroll to top"
+        >↑</button>
+      )}
 
       {/* Tool detail modal */}
       {selectedTool && (
