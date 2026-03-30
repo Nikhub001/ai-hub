@@ -2,7 +2,9 @@ import { Link } from 'react-router-dom'
 import { collections } from './data/collections'
 import { tools } from './data/tools'
 
-export default function Collections({ lang = 'ru', isDark = true }) {
+export default function Collections() {
+  const lang = localStorage.getItem('freeai_lang') || 'ru'
+  const isDark = localStorage.getItem('freeai_theme') !== 'light'
   return (
     <div className="min-h-screen relative overflow-hidden" style={{background: 'linear-gradient(135deg, #0f0a1e 0%, #030712 50%, #0a0f1e 100%)'}}>
       {/* Full page glow orbs */}
