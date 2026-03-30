@@ -1,4 +1,5 @@
 import { useState, useMemo, useEffect, useRef } from 'react'
+import { Link } from 'react-router-dom'
 import { tools, categoryList } from './data/tools'
 import { t } from './i18n'
 
@@ -433,6 +434,14 @@ export default function App() {
       {/* Footer */}
       <footer className="mt-4 py-8 text-center text-gray-600 text-sm" style={{borderTop: '1px solid transparent', background: 'linear-gradient(#030712, #030712) padding-box, linear-gradient(to right, #7c3aed33, #3b82f633, #ec489933) border-box'}}>
         <p>{tr.footer(tools.length)}</p>
+        <div className="flex justify-center gap-4 mt-3">
+          <Link to="/about" className="text-gray-600 hover:text-purple-400 transition-colors text-xs">
+            {lang === 'ru' ? 'О проекте' : 'About'}
+          </Link>
+          <a href="https://github.com/Nikhub001/ai-hub" target="_blank" rel="noopener noreferrer" className="text-gray-600 hover:text-purple-400 transition-colors text-xs">
+            GitHub
+          </a>
+        </div>
       </footer>
 
       {/* Scroll to top */}
