@@ -10,7 +10,7 @@ function ToolCard({ tool, lang, favorites, onToggleFav }) {
       href={tool.url}
       target="_blank"
       rel="noopener noreferrer"
-      className="group bg-gray-800/60 border border-gray-700/50 rounded-2xl p-5 flex flex-col gap-3 hover:border-purple-500/60 hover:bg-gray-800/90 transition-all duration-200 hover:-translate-y-1 hover:shadow-xl hover:shadow-purple-900/20"
+      className="group bg-gradient-to-br from-gray-800/70 to-gray-900/70 border border-gray-700/40 rounded-2xl p-5 flex flex-col gap-3 hover:border-purple-500/60 hover:bg-gray-800/90 transition-all duration-200 hover:-translate-y-1 hover:shadow-xl hover:shadow-purple-500/30"
     >
       <div className="flex items-start justify-between gap-3">
         <div className="flex items-center gap-3">
@@ -122,7 +122,13 @@ export default function App() {
     <div className="min-h-screen bg-gray-950 text-white">
       {/* Header */}
       <div className="relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-purple-900/30 via-gray-950 to-blue-900/20 pointer-events-none" />
+        <div className="absolute inset-0 bg-gradient-to-br from-purple-950 via-gray-950 to-blue-950 pointer-events-none" />
+        {/* Animated gradient orbs */}
+        <div className="absolute -top-32 -left-32 w-96 h-96 bg-purple-600/20 rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute -top-20 right-1/4 w-72 h-72 bg-blue-600/15 rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute top-10 -right-20 w-80 h-80 bg-pink-600/15 rounded-full blur-3xl pointer-events-none" />
+        {/* Grid pattern */}
+        <div className="absolute inset-0 pointer-events-none" style={{backgroundImage: 'radial-gradient(circle at 1px 1px, rgba(255,255,255,0.05) 1px, transparent 0)', backgroundSize: '40px 40px'}} />
         <div className="relative max-w-7xl mx-auto px-4 pt-14 pb-10 text-center">
           {/* Lang toggle */}
           <div className="absolute top-4 right-4 flex gap-1 bg-gray-800/80 border border-gray-700/50 rounded-xl p-1">
@@ -143,8 +149,8 @@ export default function App() {
           <div className="inline-flex items-center gap-2 bg-purple-900/40 border border-purple-700/40 rounded-full px-4 py-1.5 text-sm text-purple-300 mb-5">
             <span>⚡</span> {tr.tagline}
           </div>
-          <h1 className="text-5xl sm:text-6xl font-black mb-3 bg-gradient-to-r from-white via-purple-200 to-purple-400 bg-clip-text text-transparent">
-            FreeAI
+          <h1 className="text-5xl sm:text-6xl font-black mb-3 bg-gradient-to-r from-white via-purple-300 to-pink-400 bg-clip-text text-transparent">
+            ✦ FreeAI
           </h1>
           <p className="text-xl font-semibold text-gray-300 mb-2">{tr.subtitle}</p>
           <p className="text-gray-500 text-base max-w-xl mx-auto mb-8">{tr.desc}</p>
@@ -198,7 +204,7 @@ export default function App() {
               onClick={() => setActiveCategory(cat.id)}
               className={`flex-shrink-0 px-4 py-2 rounded-xl text-sm font-medium transition-all ${
                 activeCategory === cat.id
-                  ? `bg-gradient-to-r ${cat.color} text-white shadow-lg`
+                  ? `bg-gradient-to-r ${cat.color} text-white shadow-lg shadow-purple-500/20`
                   : 'bg-gray-800/60 text-gray-400 hover:bg-gray-700/60 hover:text-white'
               }`}
             >
@@ -259,7 +265,7 @@ export default function App() {
       </div>
 
       {/* Footer */}
-      <footer className="border-t border-gray-800/50 mt-12 py-8 text-center text-gray-600 text-sm">
+      <footer className="mt-12 py-8 text-center text-gray-600 text-sm" style={{borderTop: '1px solid transparent', background: 'linear-gradient(#030712, #030712) padding-box, linear-gradient(to right, #7c3aed33, #3b82f633, #ec489933) border-box'}}>
         <p>{tr.footer(tools.length)}</p>
       </footer>
     </div>
