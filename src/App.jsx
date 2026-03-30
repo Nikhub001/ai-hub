@@ -180,7 +180,7 @@ export default function App() {
       result = [...result].sort((a, b) => (likeCounts[b.id] || 0) - (likeCounts[a.id] || 0))
     }
     return result
-  }, [activeCategory, search, lang, noVpnOnly, favorites, sortByLikes, likes])
+  }, [activeCategory, search, lang, noVpnOnly, favorites, sortByLikes, likeCounts])
 
   const activeCat = categories.find(c => c.id === activeCategory)
 
