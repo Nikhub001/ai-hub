@@ -4,12 +4,13 @@ import { tools } from './data/tools'
 
 export default function Collections({ lang = 'ru', isDark = true }) {
   return (
-    <div className="min-h-screen" style={{background: 'linear-gradient(135deg, #0f0a1e 0%, #030712 50%, #0a0f1e 100%)'}}>
+    <div className="min-h-screen relative overflow-hidden" style={{background: 'linear-gradient(135deg, #0f0a1e 0%, #030712 50%, #0a0f1e 100%)'}}>
+      {/* Full page glow orbs */}
+      <div className="fixed -top-40 -left-40 w-[600px] h-[600px] bg-purple-600/25 rounded-full blur-3xl pointer-events-none" />
+      <div className="fixed top-20 -right-20 w-[500px] h-[500px] bg-pink-600/15 rounded-full blur-3xl pointer-events-none" />
+      <div className="fixed bottom-0 left-1/3 w-[400px] h-[400px] bg-blue-600/15 rounded-full blur-3xl pointer-events-none" />
       {/* Header */}
       <div className="relative overflow-hidden">
-        <div className="absolute -top-40 -left-40 w-[500px] h-[500px] bg-purple-600/30 rounded-full blur-3xl pointer-events-none" />
-        <div className="absolute top-0 -right-20 w-[400px] h-[400px] bg-pink-600/20 rounded-full blur-3xl pointer-events-none" />
-        <div className="absolute top-20 left-1/2 w-[300px] h-[300px] bg-blue-600/15 rounded-full blur-3xl pointer-events-none" />
         <div className="relative max-w-4xl mx-auto px-4 pt-14 pb-10 text-center">
           <Link to="/" className="inline-flex items-center gap-2 text-purple-400 hover:text-purple-300 text-sm mb-6 transition-colors">
             ← {lang === 'ru' ? 'Назад' : 'Back'}
