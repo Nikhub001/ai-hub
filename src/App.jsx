@@ -2,7 +2,7 @@ import { useState, useMemo, useEffect, useRef } from 'react'
 import { tools, categoryList } from './data/tools'
 import { t } from './i18n'
 
-function ToolCard({ tool, lang, favorites, onToggleFav }) {
+function ToolCard({ tool, lang, favorites, onToggleFav, isDark }) {
   const tr = t[lang]
   const isFav = favorites.includes(tool.id)
   return (
@@ -10,13 +10,13 @@ function ToolCard({ tool, lang, favorites, onToggleFav }) {
       href={tool.url}
       target="_blank"
       rel="noopener noreferrer"
-      className="group bg-gradient-to-br from-gray-800/70 to-gray-900/70 border border-gray-700/40 rounded-2xl p-5 flex flex-col gap-3 hover:border-purple-500/60 hover:bg-gray-800/90 transition-all duration-200 hover:-translate-y-1 hover:shadow-xl hover:shadow-purple-500/30"
+      className={`group theme-card border rounded-2xl p-5 flex flex-col gap-3 transition-all duration-200 hover:-translate-y-1 hover:shadow-xl hover:shadow-purple-500/30 hover:border-purple-500/60 ${isDark ? 'bg-gradient-to-br from-gray-800/70 to-gray-900/70 border-gray-700/40' : 'bg-white border-gray-200 hover:bg-gray-50'}`}
     >
       <div className="flex items-start justify-between gap-3">
         <div className="flex items-center gap-3">
           <span className="text-3xl">{tool.icon}</span>
           <div>
-            <h3 className="font-bold text-white text-base group-hover:text-purple-300 transition-colors leading-tight">
+            <h3 className={`font-bold text-base group-hover:text-purple-400 transition-colors leading-tight theme-text ${isDark ? 'text-white' : 'text-gray-900'}`}>
               {tool.name}
             </h3>
             <div className="flex flex-wrap gap-1 mt-1">
@@ -42,12 +42,12 @@ function ToolCard({ tool, lang, favorites, onToggleFav }) {
           <span className="text-gray-500 group-hover:text-purple-400 transition-colors text-lg mt-0.5">↗</span>
         </div>
       </div>
-      <p className="text-gray-400 text-sm leading-relaxed">
+      <p className={`text-sm leading-relaxed theme-muted ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
         {lang === 'ru' ? tool.descRu : tool.descEn}
       </p>
       <div className="flex flex-wrap gap-1 mt-auto">
         {(lang === 'ru' ? tool.tagsRu : tool.tagsEn).map(tag => (
-          <span key={tag} className="text-xs px-2 py-0.5 bg-gray-700/60 text-gray-400 rounded-full">
+          <span key={tag} className={`text-xs px-2 py-0.5 rounded-full theme-tag ${isDark ? 'bg-gray-700/60 text-gray-400' : 'bg-gray-100 text-gray-500'}`}>
             #{tag}
           </span>
         ))}
@@ -62,6 +62,7 @@ export default function App() {
   const [lang, setLang] = useState(() => localStorage.getItem('freeai_lang') || 'ru')
   const [noVpnOnly, setNoVpnOnly] = useState(false)
   const [favorites, setFavorites] = useState(() => JSON.parse(localStorage.getItem('freeai_favs') || '[]'))
+  const [isDark, setIsDark] = useState(() => localStorage.getItem('freeai_theme') !== 'light')
 
   const catsRef = useRef(null)
 
@@ -78,6 +79,11 @@ export default function App() {
   useEffect(() => {
     localStorage.setItem('freeai_favs', JSON.stringify(favorites))
   }, [favorites])
+
+  useEffect(() => {
+    document.documentElement.classList.toggle('light', !isDark)
+    localStorage.setItem('freeai_theme', isDark ? 'dark' : 'light')
+  }, [isDark])
 
   const toggleFav = (id) => {
     setFavorites(prev => prev.includes(id) ? prev.filter(f => f !== id) : [...prev, id])
@@ -123,10 +129,10 @@ export default function App() {
 
 
   return (
-    <div className="min-h-screen bg-gray-950 text-white">
+    <div className={`min-h-screen theme-bg ${isDark ? 'bg-gray-950 text-white' : 'bg-slate-100 text-gray-900'}`}>
       {/* Header */}
       <div className="relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-purple-950 via-gray-950 to-blue-950 pointer-events-none" />
+        <div className={`absolute inset-0 theme-hdr-grad ${isDark ? 'bg-gradient-to-br from-purple-950 via-gray-950 to-blue-950' : ''} pointer-events-none`} />
         {/* Animated gradient orbs */}
         <div className="absolute -top-32 -left-32 w-96 h-96 bg-purple-600/20 rounded-full blur-3xl pointer-events-none" />
         <div className="absolute -top-20 right-1/4 w-72 h-72 bg-blue-600/15 rounded-full blur-3xl pointer-events-none" />
@@ -134,8 +140,17 @@ export default function App() {
         {/* Grid pattern */}
         <div className="absolute inset-0 pointer-events-none" style={{backgroundImage: 'radial-gradient(circle at 1px 1px, rgba(255,255,255,0.05) 1px, transparent 0)', backgroundSize: '40px 40px'}} />
         <div className="relative max-w-7xl mx-auto px-4 pt-14 pb-10 text-center">
+          {/* Theme toggle - top left */}
+          <button
+            onClick={() => setIsDark(d => !d)}
+            className={`absolute top-4 left-4 w-9 h-9 flex items-center justify-center rounded-xl text-lg border transition-all theme-langbtn ${isDark ? 'bg-gray-800/80 border-gray-700/50 hover:border-gray-500' : 'bg-white/80 border-gray-200 hover:border-gray-300'}`}
+            title={isDark ? 'Светлая тема' : 'Тёмная тема'}
+          >
+            {isDark ? '☀️' : '🌙'}
+          </button>
+
           {/* Lang toggle */}
-          <div className="absolute top-4 right-4 flex gap-1 bg-gray-800/80 border border-gray-700/50 rounded-xl p-1">
+          <div className={`absolute top-4 right-4 flex gap-1 theme-langbtn border rounded-xl p-1 ${isDark ? 'bg-gray-800/80 border-gray-700/50' : 'bg-white/80 border-gray-200'}`}>
             <button
               onClick={() => setLanguage('ru')}
               className={`px-3 py-1.5 rounded-lg text-sm font-semibold transition-all ${lang === 'ru' ? 'bg-purple-600 text-white' : 'text-gray-400 hover:text-white'}`}
@@ -163,17 +178,17 @@ export default function App() {
           <div className="flex justify-center gap-2 mb-4">
             <button
               onClick={() => setNoVpnOnly(v => !v)}
-              className={`flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-medium border transition-all ${
+              className={`flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-medium border transition-all theme-filterbtn ${
                 noVpnOnly
-                  ? 'bg-orange-600/30 border-orange-500/60 text-orange-300'
-                  : 'bg-gray-800/60 border-gray-700/50 text-gray-400 hover:text-white hover:border-gray-600'
+                  ? 'bg-orange-600/30 border-orange-500/60 text-orange-400'
+                  : isDark ? 'bg-gray-800/60 border-gray-700/50 text-gray-400 hover:text-white hover:border-gray-600' : 'bg-white border-gray-200 text-gray-500 hover:text-gray-900 hover:border-gray-300'
               }`}
             >
               {noVpnOnly ? '✅' : '🔒'} {tr.showVpn}
             </button>
             <button
               onClick={handleRandom}
-              className="flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-medium border bg-gray-800/60 border-gray-700/50 text-gray-400 hover:text-white hover:border-gray-600 transition-all"
+              className={`flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-medium border transition-all theme-filterbtn ${isDark ? 'bg-gray-800/60 border-gray-700/50 text-gray-400 hover:text-white hover:border-gray-600' : 'bg-white border-gray-200 text-gray-500 hover:text-gray-900 hover:border-gray-300'}`}
             >
               {tr.randomBtn}
             </button>
@@ -187,7 +202,7 @@ export default function App() {
               placeholder={tr.searchPlaceholder}
               value={search}
               onChange={e => setSearch(e.target.value)}
-              className="w-full bg-gray-800/80 border border-gray-700/60 rounded-2xl pl-11 pr-5 py-3.5 text-white placeholder-gray-500 focus:outline-none focus:border-purple-500/60 focus:bg-gray-800 transition-all"
+              className={`w-full theme-input border rounded-2xl pl-11 pr-5 py-3.5 placeholder-gray-400 focus:outline-none focus:border-purple-500/60 transition-all ${isDark ? 'bg-gray-800/80 border-gray-700/60 text-white placeholder-gray-500 focus:bg-gray-800' : 'bg-white border-gray-200 text-gray-900'}`}
             />
             {search && (
               <button
@@ -200,7 +215,7 @@ export default function App() {
       </div>
 
       {/* Categories */}
-      <div className="sticky top-0 z-10 bg-gray-950/90 backdrop-blur-md border-b border-gray-800/50">
+      <div className={`sticky top-0 z-10 theme-catbar backdrop-blur-md border-b ${isDark ? 'bg-gray-950/90 border-gray-800/50' : 'bg-slate-50/95 border-gray-200'}`}>
         <div
           className="max-w-7xl mx-auto px-4 py-3 flex gap-2 overflow-x-auto"
           ref={catsRef}
@@ -210,10 +225,10 @@ export default function App() {
             <button
               key={cat.id}
               onClick={() => setActiveCategory(cat.id)}
-              className={`flex-shrink-0 px-4 py-2 rounded-xl text-sm font-medium transition-all ${
+              className={`flex-shrink-0 px-4 py-2 rounded-xl text-sm font-medium transition-all theme-catbtn ${
                 activeCategory === cat.id
                   ? `bg-gradient-to-r ${cat.color} text-white shadow-lg shadow-purple-500/20`
-                  : 'bg-gray-800/60 text-gray-400 hover:bg-gray-700/60 hover:text-white'
+                  : isDark ? 'bg-gray-800/60 text-gray-400 hover:bg-gray-700/60 hover:text-white' : 'bg-white text-gray-500 hover:bg-gray-100 hover:text-gray-900 border border-gray-200'
               }`}
             >
               {cat.label}
@@ -225,10 +240,10 @@ export default function App() {
       {/* Grid */}
       <div className="max-w-7xl mx-auto px-4 py-8">
         <div className="flex items-center justify-between mb-6">
-          <h2 className="text-xl font-bold text-gray-200">
+          <h2 className={`text-xl font-bold theme-text ${isDark ? 'text-gray-200' : 'text-gray-800'}`}>
             {search ? tr.resultsLabel(search) : activeCat?.label}
           </h2>
-          <span className="text-sm text-gray-500">{tr.toolsCount(filtered.length)}</span>
+          <span className={`text-sm theme-muted ${isDark ? 'text-gray-500' : 'text-gray-400'}`}>{tr.toolsCount(filtered.length)}</span>
         </div>
 
         {filtered.length === 0 ? (
@@ -240,7 +255,7 @@ export default function App() {
         ) : (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
             {filtered.map(tool => (
-              <ToolCard key={tool.id} tool={tool} lang={lang} favorites={favorites} onToggleFav={toggleFav} />
+              <ToolCard key={tool.id} tool={tool} lang={lang} favorites={favorites} onToggleFav={toggleFav} isDark={isDark} />
             ))}
           </div>
         )}

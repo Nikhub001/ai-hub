@@ -1,1 +1,30 @@
 @import "tailwindcss";
+
+/* ── Light theme overrides ────────────────────────── */
+.light {
+  --bg-main:     #f1f5f9;
+  --bg-card:     #ffffff;
+  --bg-input:    #ffffff;
+  --bg-catbar:   rgba(248,250,252,0.95);
+  --border-card: #e2e8f0;
+  --text-main:   #0f172a;
+  --text-muted:  #64748b;
+  --text-dim:    #94a3b8;
+}
+
+.light .theme-bg        { background-color: var(--bg-main) !important; color: var(--text-main) !important; }
+.light .theme-card      { background: var(--bg-card) !important; border-color: var(--border-card) !important; }
+.light .theme-catbar    { background-color: var(--bg-catbar) !important; border-color: #e2e8f0 !important; }
+.light .theme-input     { background: var(--bg-input) !important; border-color: #cbd5e1 !important; color: #0f172a !important; }
+.light .theme-text      { color: var(--text-main) !important; }
+.light .theme-muted     { color: var(--text-muted) !important; }
+.light .theme-dim       { color: var(--text-dim) !important; }
+.light .theme-tag       { background: #f1f5f9 !important; color: #475569 !important; }
+.light .theme-catbtn    { background: #f1f5f9 !important; color: #475569 !important; }
+.light .theme-catbtn:hover { background: #e2e8f0 !important; color: #0f172a !important; }
+.light .theme-section   { background: linear-gradient(to bottom right, #ede9fe, #dbeafe) !important; border-color: #c4b5fd !important; }
+.light .theme-footer    { color: #94a3b8 !important; border-color: #e2e8f0 !important; }
+.light .theme-filterbtn { background: #f1f5f9 !important; border-color: #e2e8f0 !important; color: #475569 !important; }
+.light .theme-filterbtn:hover { color: #0f172a !important; border-color: #cbd5e1 !important; }
+.light .theme-langbtn   { background: rgba(241,245,249,0.9) !important; border-color: #e2e8f0 !important; }
+.light .theme-hdr-grad  { background: linear-gradient(to bottom right, #ede9fe, #f8fafc, #dbeafe) !important; }
