@@ -105,6 +105,15 @@ export default function App() {
   const catsRef = useRef(null)
   const tr = t[lang]
 
+  // Read URL params on mount
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search)
+    const cat = params.get('cat')
+    const q = params.get('q')
+    if (cat) setActiveCategory(cat)
+    if (q) setSearch(q)
+  }, [])
+
   useEffect(() => {
     const el = catsRef.current
     if (!el) return
