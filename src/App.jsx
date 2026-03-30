@@ -253,7 +253,7 @@ export default function App() {
           <h3 className="text-lg font-bold text-white mb-2">{tr.suggestTitle}</h3>
           <p className="text-gray-400 text-sm mb-5">{tr.suggestDesc}</p>
           <a
-            href={`https://t.me/NikiMAl0?text=${encodeURIComponent(tr.suggestMsg)}`}
+            href={`https://github.com/Nikhub001/ai-hub/issues/new?title=${encodeURIComponent(tr.suggestIssueTitle)}&body=${encodeURIComponent(tr.suggestMsg)}&labels=suggestion`}
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 px-6 py-3 bg-purple-600 hover:bg-purple-500 text-white font-semibold rounded-xl text-sm transition-all hover:shadow-lg hover:shadow-purple-500/30"

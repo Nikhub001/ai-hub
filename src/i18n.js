@@ -22,8 +22,9 @@ export const t = {
     showVpn: 'Показать только без VPN',
     suggestTitle: 'Не нашёл нужный AI?',
     suggestDesc: 'Напиши нам — добавим любой бесплатный инструмент в каталог.',
-    suggestBtn: 'Написать нам',
-    suggestMsg: 'Привет! Хочу предложить AI инструмент для добавления на сайт hub-freeai.vercel.app: ',
+    suggestBtn: '📝 Предложить на GitHub',
+    suggestIssueTitle: 'Предложение: добавить AI инструмент',
+    suggestMsg: 'Название инструмента: \nСсылка: \nКатегория: \nПочему бесплатный: ',
     categories: {
       all: '✨ Все',
       image: '🖼️ Картинки',
@@ -77,8 +78,9 @@ export const t = {
     showVpn: 'Show only VPN-free',
     suggestTitle: "Don't see the AI you need?",
     suggestDesc: 'Write to us — we will add any free tool to the catalog.',
-    suggestBtn: 'Contact us',
-    suggestMsg: 'Hi! I want to suggest an AI tool for hub-freeai.vercel.app: ',
+    suggestBtn: '📝 Suggest on GitHub',
+    suggestIssueTitle: 'Suggestion: add AI tool',
+    suggestMsg: 'Tool name: \nLink: \nCategory: \nWhy it is free: ',
     categories: {
       all: '✨ All',
       image: '🖼️ Images',
