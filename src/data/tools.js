@@ -12,6 +12,10 @@ export const categoryList = [
   { id: 'design',       color: 'from-fuchsia-500 to-pink-500' },
   { id: 'productivity', color: 'from-amber-500 to-yellow-500' },
   { id: 'interior',    color: 'from-orange-500 to-amber-500' },
+  { id: 'gaming',    color: 'from-green-500 to-teal-500' },
+  { id: 'photo',     color: 'from-sky-500 to-blue-500' },
+  { id: 'avatar',    color: 'from-rose-500 to-pink-500' },
+  { id: 'education', color: 'from-lime-500 to-green-500' },
 ]
 
 export const tools = [
@@ -926,4 +930,27 @@ export const tools = [
     tagsRu: ['календарь', 'планирование', 'Google'], tagsEn: ['calendar', 'planning', 'Google'],
     url: 'https://reclaim.ai',
   },
+
+  // ── GAMING ───────────────────────────────────────────────────
+  { id: 112, name: 'Scenario.gg', category: 'gaming', icon: '🎮', vpn: true, badgeRu: 'Бесплатный план', badgeEn: 'Free plan', descRu: 'Генерация игровых текстур, спрайтов и ассетов с AI. Для Unity и Unreal.', descEn: 'Generate game textures, sprites and assets with AI. For Unity and Unreal.', tagsRu: ['текстуры', 'ассеты', 'Unity'], tagsEn: ['textures', 'assets', 'Unity'], url: 'https://scenario.gg' },
+  { id: 113, name: 'Ludo.ai', category: 'gaming', icon: '🕹️', vpn: true, badgeRu: 'Бесплатный план', badgeEn: 'Free plan', descRu: 'AI генерирует идеи для игр, механики, нарративы и анализирует конкурентов.', descEn: 'AI generates game ideas, mechanics, narratives and analyzes competitors.', tagsRu: ['идеи', 'механики', 'геймдизайн'], tagsEn: ['ideas', 'mechanics', 'game design'], url: 'https://ludo.ai' },
+  { id: 114, name: 'Rosebud AI', category: 'gaming', icon: '🌹', vpn: true, badgeRu: 'Бесплатный план', badgeEn: 'Free plan', descRu: 'Создавай целые игры с помощью AI. Опиши игру текстом — получи готовый прототип.', descEn: 'Create full games with AI. Describe in text — get a ready prototype.', tagsRu: ['прототип', 'текст', 'создание'], tagsEn: ['prototype', 'text', 'creation'], url: 'https://rosebud.ai' },
+  { id: 115, name: 'Inworld AI', category: 'gaming', icon: '🤖', vpn: true, badgeRu: 'Бесплатный план', badgeEn: 'Free plan', descRu: 'AI персонажи для игр с памятью и личностью. NPC которые по-настоящему разговаривают.', descEn: 'AI game characters with memory and personality. NPCs that truly talk.', tagsRu: ['NPC', 'персонажи', 'диалоги'], tagsEn: ['NPC', 'characters', 'dialogue'], url: 'https://inworld.ai' },
+
+  // ── PHOTO ────────────────────────────────────────────────────
+  { id: 116, name: 'Upscayl', category: 'photo', icon: '🔭', badgeRu: '100% бесплатно', badgeEn: '100% free', descRu: 'Увеличение разрешения фото в 4-8 раз без потери качества. Open source.', descEn: 'Upscale photos 4-8x without quality loss. Open source.', tagsRu: ['upscale', '4K', 'качество'], tagsEn: ['upscale', '4K', 'quality'], url: 'https://upscayl.org' },
+  { id: 117, name: 'Remini', category: 'photo', icon: '✨', badgeRu: 'Бесплатный план', badgeEn: 'Free plan', descRu: 'Улучшение старых и размытых фотографий. Восстановление лиц с AI.', descEn: 'Enhance old and blurry photos. AI face restoration.', tagsRu: ['восстановление', 'лица', 'старые фото'], tagsEn: ['restoration', 'faces', 'old photos'], url: 'https://remini.ai' },
+  { id: 118, name: 'Cleanup.pictures', category: 'photo', icon: '🧹', badgeRu: 'Бесплатно', badgeEn: 'Free', descRu: 'Удаление ненужных объектов с фото одним кликом. Магический ластик.', descEn: 'Remove unwanted objects from photos with one click. Magic eraser.', tagsRu: ['удаление', 'ластик', 'объекты'], tagsEn: ['removal', 'eraser', 'objects'], url: 'https://cleanup.pictures' },
+  { id: 119, name: 'Picwish', category: 'photo', icon: '🪄', badgeRu: 'Бесплатный план', badgeEn: 'Free plan', descRu: 'Улучшение фото, удаление фона, ретушь. Пакетная обработка.', descEn: 'Photo enhancement, background removal, retouching. Batch processing.', tagsRu: ['ретушь', 'фон', 'пакетная'], tagsEn: ['retouch', 'background', 'batch'], url: 'https://picwish.com' },
+
+  // ── AVATAR ───────────────────────────────────────────────────
+  { id: 120, name: 'Ready Player Me', category: 'avatar', icon: '👤', badgeRu: '100% бесплатно', badgeEn: '100% free', descRu: 'Создание 3D аватара из селфи. Работает в 1000+ играх и метавёрсах.', descEn: 'Create a 3D avatar from selfie. Works in 1000+ games and metaverses.', tagsRu: ['3D аватар', 'игры', 'метавёрс'], tagsEn: ['3D avatar', 'games', 'metaverse'], url: 'https://readyplayer.me' },
+  { id: 121, name: 'PFPMaker', category: 'avatar', icon: '🖼️', badgeRu: '100% бесплатно', badgeEn: '100% free', descRu: 'Профессиональные аватары для соцсетей. 5000+ фонов и стилей.', descEn: 'Professional avatars for social media. 5000+ backgrounds and styles.', tagsRu: ['профиль', 'соцсети', 'фон'], tagsEn: ['profile', 'social media', 'background'], url: 'https://pfpmaker.com' },
+  { id: 122, name: 'Avatoon', category: 'avatar', icon: '🎨', badgeRu: 'Бесплатный план', badgeEn: 'Free plan', descRu: 'Создание мультяшного аватара из фото. Персонализированные стикеры.', descEn: 'Create cartoon avatar from photo. Personalized stickers.', tagsRu: ['мультяшный', 'стикеры', 'фото'], tagsEn: ['cartoon', 'stickers', 'photo'], url: 'https://avatoon.me' },
+
+  // ── EDUCATION ────────────────────────────────────────────────
+  { id: 123, name: 'Khan Academy AI', category: 'education', icon: '🎓', badgeRu: '100% бесплатно', badgeEn: '100% free', descRu: 'Персональный AI репетитор. Математика, наука, история для всех возрастов.', descEn: 'Personal AI tutor. Math, science, history for all ages.', tagsRu: ['математика', 'репетитор', 'бесплатно'], tagsEn: ['math', 'tutor', 'free'], url: 'https://khanacademy.org' },
+  { id: 124, name: 'Quizlet AI', category: 'education', icon: '📇', badgeRu: 'Бесплатный план', badgeEn: 'Free plan', descRu: 'AI создаёт флеш-карточки и тесты из любого текста. Умное повторение.', descEn: 'AI creates flashcards and quizzes from any text. Smart repetition.', tagsRu: ['карточки', 'тесты', 'запоминание'], tagsEn: ['flashcards', 'quizzes', 'memorization'], url: 'https://quizlet.com' },
+  { id: 125, name: 'Socratic by Google', category: 'education', icon: '🤔', badgeRu: '100% бесплатно', badgeEn: '100% free', descRu: 'Сфотографируй задачу — AI объяснит решение. Математика, химия, биология.', descEn: 'Photo a problem — AI explains the solution. Math, chemistry, biology.', tagsRu: ['задачи', 'фото', 'объяснение'], tagsEn: ['problems', 'photo', 'explanation'], url: 'https://socratic.org' },
+  { id: 126, name: 'Wolfram Alpha', category: 'education', icon: '🧮', badgeRu: '100% бесплатно', badgeEn: '100% free', descRu: 'Вычислительный движок знаний. Математика, физика, химия, статистика.', descEn: 'Computational knowledge engine. Math, physics, chemistry, statistics.', tagsRu: ['вычисления', 'математика', 'физика'], tagsEn: ['computation', 'math', 'physics'], url: 'https://wolframalpha.com' },
 ]

@@ -1,9 +1,10 @@
-import { useState, useMemo } from 'react'
+import { useState, useMemo, useEffect } from 'react'
 import { tools, categoryList } from './data/tools'
 import { t } from './i18n'
 
-function ToolCard({ tool, lang }) {
+function ToolCard({ tool, lang, favorites, onToggleFav }) {
   const tr = t[lang]
+  const isFav = favorites.includes(tool.id)
   return (
     <a
       href={tool.url}
@@ -30,7 +31,16 @@ function ToolCard({ tool, lang }) {
             </div>
           </div>
         </div>
-        <span className="text-gray-500 group-hover:text-purple-400 transition-colors text-lg mt-1 flex-shrink-0">↗</span>
+        <div className="flex items-center gap-1 flex-shrink-0">
+          <button
+            onClick={e => { e.preventDefault(); e.stopPropagation(); onToggleFav(tool.id) }}
+            className="text-lg leading-none p-1 hover:scale-125 transition-transform"
+            aria-label="Toggle favorite"
+          >
+            {isFav ? '❤️' : '🤍'}
+          </button>
+          <span className="text-gray-500 group-hover:text-purple-400 transition-colors text-lg mt-0.5">↗</span>
+        </div>
       </div>
       <p className="text-gray-400 text-sm leading-relaxed">
         {lang === 'ru' ? tool.descRu : tool.descEn}
@@ -51,22 +61,38 @@ export default function App() {
   const [search, setSearch] = useState('')
   const [lang, setLang] = useState(() => localStorage.getItem('freeai_lang') || 'ru')
   const [noVpnOnly, setNoVpnOnly] = useState(false)
+  const [favorites, setFavorites] = useState(() => JSON.parse(localStorage.getItem('freeai_favs') || '[]'))
+  const [subEmail, setSubEmail] = useState('')
+  const [subSubmitted, setSubSubmitted] = useState(false)
 
   const tr = t[lang]
+
+  useEffect(() => {
+    localStorage.setItem('freeai_favs', JSON.stringify(favorites))
+  }, [favorites])
+
+  const toggleFav = (id) => {
+    setFavorites(prev => prev.includes(id) ? prev.filter(f => f !== id) : [...prev, id])
+  }
 
   const setLanguage = (l) => {
     setLang(l)
     localStorage.setItem('freeai_lang', l)
   }
 
-  const categories = categoryList.map(c => ({
-    ...c,
-    label: tr.categories[c.id],
-  }))
+  const categories = [
+    { id: 'all', color: 'from-purple-500 to-pink-500', label: tr.categories['all'] },
+    { id: 'favorites', color: 'from-red-500 to-pink-500', label: tr.favorites },
+    ...categoryList.filter(c => c.id !== 'all').map(c => ({
+      ...c,
+      label: tr.categories[c.id],
+    })),
+  ]
 
   const filtered = useMemo(() => {
     let result = tools
-    if (activeCategory !== 'all') result = result.filter(t => t.category === activeCategory)
+    if (activeCategory === 'favorites') result = result.filter(t => favorites.includes(t.id))
+    else if (activeCategory !== 'all') result = result.filter(t => t.category === activeCategory)
     if (noVpnOnly) result = result.filter(t => !t.vpn)
     if (search.trim()) {
       const q = search.toLowerCase()
@@ -77,9 +103,20 @@ export default function App() {
       )
     }
     return result
-  }, [activeCategory, search, lang, noVpnOnly])
+  }, [activeCategory, search, lang, noVpnOnly, favorites])
 
   const activeCat = categories.find(c => c.id === activeCategory)
+
+  const handleRandom = () => {
+    if (filtered.length === 0) return
+    const pick = filtered[Math.floor(Math.random() * filtered.length)]
+    window.open(pick.url, '_blank', 'noopener,noreferrer')
+  }
+
+  const handleSubscribe = (e) => {
+    e.preventDefault()
+    if (subEmail.includes('@')) setSubSubmitted(true)
+  }
 
   return (
     <div className="min-h-screen bg-gray-950 text-white">
@@ -112,8 +149,8 @@ export default function App() {
           <p className="text-xl font-semibold text-gray-300 mb-2">{tr.subtitle}</p>
           <p className="text-gray-500 text-base max-w-xl mx-auto mb-8">{tr.desc}</p>
 
-          {/* VPN filter */}
-          <div className="flex justify-center mb-4">
+          {/* VPN filter + Random */}
+          <div className="flex justify-center gap-2 mb-4">
             <button
               onClick={() => setNoVpnOnly(v => !v)}
               className={`flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-medium border transition-all ${
@@ -123,6 +160,12 @@ export default function App() {
               }`}
             >
               {noVpnOnly ? '✅' : '🔒'} {tr.showVpn}
+            </button>
+            <button
+              onClick={handleRandom}
+              className="flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-medium border bg-gray-800/60 border-gray-700/50 text-gray-400 hover:text-white hover:border-gray-600 transition-all"
+            >
+              {tr.randomBtn}
             </button>
           </div>
 
@@ -183,10 +226,36 @@ export default function App() {
         ) : (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
             {filtered.map(tool => (
-              <ToolCard key={tool.id} tool={tool} lang={lang} />
+              <ToolCard key={tool.id} tool={tool} lang={lang} favorites={favorites} onToggleFav={toggleFav} />
             ))}
           </div>
         )}
+      </div>
+
+      {/* Subscribe */}
+      <div className="max-w-xl mx-auto px-4 mb-12">
+        <div className="bg-gray-800/60 border border-gray-700/50 rounded-2xl p-6 text-center">
+          <h3 className="text-lg font-bold text-white mb-4">{tr.subscribeTitle}</h3>
+          {subSubmitted ? (
+            <p className="text-green-400">{tr.subscribeThanks}</p>
+          ) : (
+            <form onSubmit={handleSubscribe} className="flex gap-2">
+              <input
+                type="email"
+                value={subEmail}
+                onChange={e => setSubEmail(e.target.value)}
+                placeholder={tr.subscribePlaceholder}
+                className="flex-1 bg-gray-900/60 border border-gray-700/60 rounded-xl px-4 py-2.5 text-white placeholder-gray-500 focus:outline-none focus:border-purple-500/60 transition-all text-sm"
+              />
+              <button
+                type="submit"
+                className="px-5 py-2.5 bg-purple-600 hover:bg-purple-500 text-white font-semibold rounded-xl text-sm transition-all"
+              >
+                {tr.subscribeBtn}
+              </button>
+            </form>
+          )}
+        </div>
       </div>
 
       {/* Footer */}
