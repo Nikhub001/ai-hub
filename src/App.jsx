@@ -374,8 +374,8 @@ export default function App() {
         </div>
       </div>
 
-      {/* Support the author */}
-      <div className="max-w-lg mx-auto px-4 mb-8">
+      {/* Support the author — only on 'all' tab */}
+      {activeCategory === 'all' && <div className="max-w-lg mx-auto px-4 mb-8">
         <div className={`rounded-2xl p-4 border text-center ${isDark ? 'bg-gray-900/60 border-gray-800/50' : 'bg-white border-gray-200'}`}>
           <p className={`text-xs mb-2 ${isDark ? 'text-gray-500' : 'text-gray-400'}`}>
             {lang === 'ru' ? '☕ Поддержать автора' : '☕ Support the author'}
@@ -398,7 +398,7 @@ export default function App() {
           </div>
           <p className={`text-xs mt-1.5 ${isDark ? 'text-gray-600' : 'text-gray-400'}`}>BEP20 / Polygon</p>
         </div>
-      </div>
+      </div>}
 
       {/* Footer */}
       <footer className="mt-4 py-8 text-center text-gray-600 text-sm" style={{borderTop: '1px solid transparent', background: 'linear-gradient(#030712, #030712) padding-box, linear-gradient(to right, #7c3aed33, #3b82f633, #ec489933) border-box'}}>
