@@ -1,5 +1,23 @@
 @import "tailwindcss";
 
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.card-anim {
+  animation: fadeInUp 0.4s ease forwards;
+  opacity: 0;
+}
+.card-anim:nth-child(1)  { animation-delay: 0.03s }
+.card-anim:nth-child(2)  { animation-delay: 0.06s }
+.card-anim:nth-child(3)  { animation-delay: 0.09s }
+.card-anim:nth-child(4)  { animation-delay: 0.12s }
+.card-anim:nth-child(5)  { animation-delay: 0.15s }
+.card-anim:nth-child(6)  { animation-delay: 0.18s }
+.card-anim:nth-child(7)  { animation-delay: 0.21s }
+.card-anim:nth-child(8)  { animation-delay: 0.24s }
+.card-anim:nth-child(n+9){ animation-delay: 0.27s }
+
 /* ── Light theme overrides ────────────────────────── */
 .light {
   --bg-main:     #f1f5f9;
