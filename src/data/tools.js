@@ -43,7 +43,7 @@ export const tools = [
     url: 'https://ideogram.ai',
   },
   {
-    id: 4, name: 'Adobe Firefly', category: 'image', icon: '🔥',
+    id: 4, name: 'Adobe Firefly', vpn: true, category: 'image', icon: '🔥',
     badgeRu: '25 кред/месяц', badgeEn: '25 credits/mo',
     descRu: 'Генерация и редактирование изображений от Adobe. 25 бесплатных кредитов каждый месяц.',
     descEn: 'Image generation and editing by Adobe. 25 free credits every month.',
@@ -52,7 +52,7 @@ export const tools = [
     url: 'https://firefly.adobe.com',
   },
   {
-    id: 5, name: 'Playground AI', category: 'image', icon: '🎭',
+    id: 5, name: 'Playground AI', vpn: true, category: 'image', icon: '🎭',
     badgeRu: '100 фото/день', badgeEn: '100 images/day',
     descRu: 'Мощный генератор с множеством стилей. 100 изображений в день бесплатно.',
     descEn: 'Powerful generator with many styles. 100 images per day for free.',
@@ -108,7 +108,7 @@ export const tools = [
 
   // ── CODE ─────────────────────────────────────────────────────
   {
-    id: 11, name: 'Claude.ai', category: 'code', icon: '🧠',
+    id: 11, name: 'Claude.ai', vpn: true, category: 'code', icon: '🧠',
     badgeRu: 'Бесплатно', badgeEn: 'Free',
     descRu: 'Один из лучших AI для написания и объяснения кода. Бесплатный план.',
     descEn: 'One of the best AIs for writing and explaining code. Free plan.',
@@ -117,7 +117,7 @@ export const tools = [
     url: 'https://claude.ai',
   },
   {
-    id: 12, name: 'ChatGPT', category: 'code', icon: '💬',
+    id: 12, name: 'ChatGPT', vpn: true, category: 'code', icon: '💬',
     badgeRu: 'Бесплатно', badgeEn: 'Free',
     descRu: 'Пишет код на любом языке, объясняет ошибки, помогает с архитектурой.',
     descEn: 'Writes code in any language, explains errors, helps with architecture.',
@@ -126,7 +126,7 @@ export const tools = [
     url: 'https://chatgpt.com',
   },
   {
-    id: 13, name: 'Cursor', category: 'code', icon: '⚡',
+    id: 13, name: 'Cursor', vpn: true, category: 'code', icon: '⚡',
     badgeRu: 'Бесплатный план', badgeEn: 'Free plan',
     descRu: 'Редактор кода с встроенным AI. Автодополнение, рефакторинг. VS Code-based.',
     descEn: 'Code editor with built-in AI. Autocomplete, refactoring. VS Code-based.',
@@ -144,7 +144,7 @@ export const tools = [
     url: 'https://codeium.com',
   },
   {
-    id: 15, name: 'Bolt.new', category: 'code', icon: '⚡',
+    id: 15, name: 'Bolt.new', vpn: true, category: 'code', icon: '⚡',
     badgeRu: 'Бесплатный план', badgeEn: 'Free plan',
     descRu: 'Пиши промпт — получай готовое веб-приложение. Запуск и деплой прямо в браузере.',
     descEn: 'Write a prompt — get a ready web app. Run and deploy right in the browser.',
@@ -153,7 +153,7 @@ export const tools = [
     url: 'https://bolt.new',
   },
   {
-    id: 16, name: 'v0.dev', category: 'code', icon: '🎯',
+    id: 16, name: 'v0.dev', vpn: true, category: 'code', icon: '🎯',
     badgeRu: 'Бесплатный план', badgeEn: 'Free plan',
     descRu: 'Генерация UI компонентов по описанию. React + Tailwind из текста. От Vercel.',
     descEn: 'Generate UI components from description. React + Tailwind from text. By Vercel.',
@@ -209,7 +209,7 @@ export const tools = [
     url: 'https://grammarly.com',
   },
   {
-    id: 22, name: 'Copy.ai', category: 'text', icon: '📋',
+    id: 22, name: 'Copy.ai', vpn: true, category: 'text', icon: '📋',
     badgeRu: '2000 слов/месяц', badgeEn: '2000 words/mo',
     descRu: 'Генерация маркетинговых текстов, постов, email, слоганов. Для бизнеса.',
     descEn: 'Generate marketing copy, posts, emails, slogans. For business.',
@@ -220,7 +220,7 @@ export const tools = [
 
   // ── MUSIC ────────────────────────────────────────────────────
   {
-    id: 23, name: 'Suno', category: 'music', icon: '🎵',
+    id: 23, name: 'Suno', vpn: true, category: 'music', icon: '🎵',
     badgeRu: '50 треков/день', badgeEn: '50 tracks/day',
     descRu: 'Создание полноценных песен по тексту. Любой жанр, любой стиль.',
     descEn: 'Create full songs from text. Any genre, any style.',
@@ -229,7 +229,7 @@ export const tools = [
     url: 'https://suno.com',
   },
   {
-    id: 24, name: 'Udio', category: 'music', icon: '🎶',
+    id: 24, name: 'Udio', vpn: true, category: 'music', icon: '🎶',
     badgeRu: 'Бесплатный план', badgeEn: 'Free plan',
     descRu: 'Генерация музыки высокого качества. Конкурент Suno с другим звучанием.',
     descEn: 'High-quality music generation. Suno competitor with a different sound.',
@@ -258,7 +258,7 @@ export const tools = [
 
   // ── VIDEO ────────────────────────────────────────────────────
   {
-    id: 27, name: 'Runway', category: 'video', icon: '🎬',
+    id: 27, name: 'Runway', vpn: true, category: 'video', icon: '🎬',
     badgeRu: '125 кредитов', badgeEn: '125 credits',
     descRu: 'Генерация и редактирование видео с помощью AI. 125 бесплатных кредитов.',
     descEn: 'Generate and edit video with AI. 125 free credits.',
@@ -276,7 +276,7 @@ export const tools = [
     url: 'https://capcut.com',
   },
   {
-    id: 29, name: 'Luma Dream Machine', category: 'video', icon: '🌙',
+    id: 29, name: 'Luma Dream Machine', vpn: true, category: 'video', icon: '🌙',
     badgeRu: '30 видео/месяц', badgeEn: '30 videos/mo',
     descRu: 'Генерация видео из текста или изображения. 30 бесплатных видео в месяц.',
     descEn: 'Generate video from text or image. 30 free videos per month.',
@@ -285,7 +285,7 @@ export const tools = [
     url: 'https://lumalabs.ai',
   },
   {
-    id: 30, name: 'Pika Labs', category: 'video', icon: '⚡',
+    id: 30, name: 'Pika Labs', vpn: true, category: 'video', icon: '⚡',
     badgeRu: 'Бесплатный план', badgeEn: 'Free plan',
     descRu: 'Генерация коротких видео из текста или фото. Реалистичная анимация.',
     descEn: 'Generate short videos from text or photo. Realistic animation.',
@@ -296,7 +296,7 @@ export const tools = [
 
   // ── VOICE ────────────────────────────────────────────────────
   {
-    id: 31, name: 'ElevenLabs', category: 'voice', icon: '🗣️',
+    id: 31, name: 'ElevenLabs', vpn: true, category: 'voice', icon: '🗣️',
     badgeRu: '10K симв/месяц', badgeEn: '10K chars/mo',
     descRu: 'Синтез голоса, клонирование голоса. 10,000 символов в месяц бесплатно.',
     descEn: 'Voice synthesis, voice cloning. 10,000 characters per month free.',
@@ -372,7 +372,7 @@ export const tools = [
 
   // ── CHAT ─────────────────────────────────────────────────────
   {
-    id: 39, name: 'Microsoft Copilot', category: 'chat', icon: '🪟',
+    id: 39, name: 'Microsoft Copilot', vpn: true, category: 'chat', icon: '🪟',
     badgeRu: '100% бесплатно', badgeEn: '100% free',
     descRu: 'GPT-4 от Microsoft. Полностью бесплатно. Поиск, код, изображения.',
     descEn: 'GPT-4 by Microsoft. Completely free. Search, code, images.',
@@ -381,7 +381,7 @@ export const tools = [
     url: 'https://copilot.microsoft.com',
   },
   {
-    id: 40, name: 'Grok', category: 'chat', icon: '⚡',
+    id: 40, name: 'Grok', vpn: true, category: 'chat', icon: '⚡',
     badgeRu: 'Бесплатно', badgeEn: 'Free',
     descRu: 'AI от xAI (Elon Musk). Доступ к актуальным данным Twitter/X в реальном времени.',
     descEn: 'AI by xAI (Elon Musk). Access to real-time Twitter/X data.',
@@ -419,7 +419,7 @@ export const tools = [
 
   // ── SEARCH ───────────────────────────────────────────────────
   {
-    id: 44, name: 'Perplexity', category: 'search', icon: '🔍',
+    id: 44, name: 'Perplexity', vpn: true, category: 'search', icon: '🔍',
     badgeRu: 'Бесплатно', badgeEn: 'Free',
     descRu: 'AI поиск с источниками. Отвечает на вопросы и показывает откуда информация.',
     descEn: 'AI search with sources. Answers questions and shows where info comes from.',
@@ -466,7 +466,7 @@ export const tools = [
     url: 'https://uizard.io',
   },
   {
-    id: 49, name: 'Looka', category: 'design', icon: '✨',
+    id: 49, name: 'Looka', vpn: true, category: 'design', icon: '✨',
     badgeRu: 'Превью бесплатно', badgeEn: 'Preview free',
     descRu: 'AI генератор логотипов. Введи название бренда — получи 100+ вариантов логотипа.',
     descEn: 'AI logo generator. Enter brand name — get 100+ logo options.',
@@ -475,7 +475,7 @@ export const tools = [
     url: 'https://looka.com',
   },
   {
-    id: 50, name: 'Gamma', category: 'design', icon: '🎞️',
+    id: 50, name: 'Gamma', vpn: true, category: 'design', icon: '🎞️',
     badgeRu: 'Бесплатный план', badgeEn: 'Free plan',
     descRu: 'Создание презентаций, документов и сайтов с AI. Красивые шаблоны автоматически.',
     descEn: 'Create presentations, docs and websites with AI. Beautiful templates automatically.',

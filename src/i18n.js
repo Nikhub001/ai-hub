@@ -11,6 +11,9 @@ export const t = {
     noResultsSub: 'Попробуй другой запрос',
     footer: (n) => `FreeAI — ${n} бесплатных AI инструментов 🚀`,
     openTool: 'Открыть',
+    vpnBadge: 'Нужен VPN',
+    vpnTooltip: 'Может быть недоступен в Беларуси без VPN',
+    showVpn: 'Показать только без VPN',
     categories: {
       all: '✨ Все',
       image: '🖼️ Картинки',
@@ -38,6 +41,9 @@ export const t = {
     noResultsSub: 'Try a different search',
     footer: (n) => `FreeAI — ${n} free AI tools 🚀`,
     openTool: 'Open',
+    vpnBadge: 'VPN needed',
+    vpnTooltip: 'May be unavailable in Belarus without VPN',
+    showVpn: 'Show only VPN-free',
     categories: {
       all: '✨ All',
       image: '🖼️ Images',

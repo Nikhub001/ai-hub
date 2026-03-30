@@ -18,9 +18,16 @@ function ToolCard({ tool, lang }) {
             <h3 className="font-bold text-white text-base group-hover:text-purple-300 transition-colors leading-tight">
               {tool.name}
             </h3>
-            <span className="text-xs px-2 py-0.5 bg-green-900/50 text-green-400 border border-green-700/40 rounded-full mt-1 inline-block">
-              {lang === 'ru' ? tool.badgeRu : tool.badgeEn}
-            </span>
+            <div className="flex flex-wrap gap-1 mt-1">
+              <span className="text-xs px-2 py-0.5 bg-green-900/50 text-green-400 border border-green-700/40 rounded-full inline-block">
+                {lang === 'ru' ? tool.badgeRu : tool.badgeEn}
+              </span>
+              {tool.vpn && (
+                <span title={tr.vpnTooltip} className="text-xs px-2 py-0.5 bg-orange-900/50 text-orange-400 border border-orange-700/40 rounded-full inline-block cursor-help">
+                  🔒 VPN
+                </span>
+              )}
+            </div>
           </div>
         </div>
         <span className="text-gray-500 group-hover:text-purple-400 transition-colors text-lg mt-1 flex-shrink-0">↗</span>
@@ -43,6 +50,7 @@ export default function App() {
   const [activeCategory, setActiveCategory] = useState('all')
   const [search, setSearch] = useState('')
   const [lang, setLang] = useState(() => localStorage.getItem('freeai_lang') || 'ru')
+  const [noVpnOnly, setNoVpnOnly] = useState(false)
 
   const tr = t[lang]
 
@@ -59,6 +67,7 @@ export default function App() {
   const filtered = useMemo(() => {
     let result = tools
     if (activeCategory !== 'all') result = result.filter(t => t.category === activeCategory)
+    if (noVpnOnly) result = result.filter(t => !t.vpn)
     if (search.trim()) {
       const q = search.toLowerCase()
       result = result.filter(tool =>
@@ -68,7 +77,7 @@ export default function App() {
       )
     }
     return result
-  }, [activeCategory, search, lang])
+  }, [activeCategory, search, lang, noVpnOnly])
 
   const activeCat = categories.find(c => c.id === activeCategory)
 
@@ -102,6 +111,20 @@ export default function App() {
           </h1>
           <p className="text-xl font-semibold text-gray-300 mb-2">{tr.subtitle}</p>
           <p className="text-gray-500 text-base max-w-xl mx-auto mb-8">{tr.desc}</p>
+
+          {/* VPN filter */}
+          <div className="flex justify-center mb-4">
+            <button
+              onClick={() => setNoVpnOnly(v => !v)}
+              className={`flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-medium border transition-all ${
+                noVpnOnly
+                  ? 'bg-orange-600/30 border-orange-500/60 text-orange-300'
+                  : 'bg-gray-800/60 border-gray-700/50 text-gray-400 hover:text-white hover:border-gray-600'
+              }`}
+            >
+              {noVpnOnly ? '✅' : '🔒'} {tr.showVpn}
+            </button>
+          </div>
 
           {/* Search */}
           <div className="relative max-w-lg mx-auto">
