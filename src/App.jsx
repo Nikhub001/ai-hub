@@ -374,8 +374,34 @@ export default function App() {
         </div>
       </div>
 
+      {/* Support the author */}
+      <div className="max-w-lg mx-auto px-4 mb-8">
+        <div className={`rounded-2xl p-4 border text-center ${isDark ? 'bg-gray-900/60 border-gray-800/50' : 'bg-white border-gray-200'}`}>
+          <p className={`text-xs mb-2 ${isDark ? 'text-gray-500' : 'text-gray-400'}`}>
+            {lang === 'ru' ? '☕ Поддержать автора' : '☕ Support the author'}
+          </p>
+          <div className={`flex items-center gap-2 rounded-xl px-3 py-2 ${isDark ? 'bg-gray-800/80' : 'bg-gray-50 border border-gray-200'}`}>
+            <span className="text-yellow-500 text-sm">◈</span>
+            <span className={`text-xs font-mono flex-1 truncate ${isDark ? 'text-gray-300' : 'text-gray-600'}`}>
+              0xd2903900eb4755fEFa55E07767AC21A49a125813
+            </span>
+            <button
+              onClick={() => {
+                navigator.clipboard.writeText('0xd2903900eb4755fEFa55E07767AC21A49a125813')
+                const btn = document.getElementById('copy-wallet-btn')
+                if (btn) { btn.textContent = '✅'; setTimeout(() => { btn.textContent = '📋' }, 1500) }
+              }}
+              id="copy-wallet-btn"
+              className={`text-sm px-2 py-0.5 rounded-lg transition-all flex-shrink-0 ${isDark ? 'bg-gray-700 hover:bg-gray-600 text-gray-300' : 'bg-gray-200 hover:bg-gray-300 text-gray-600'}`}
+              title="Copy address"
+            >📋</button>
+          </div>
+          <p className={`text-xs mt-1.5 ${isDark ? 'text-gray-600' : 'text-gray-400'}`}>BEP20 / Polygon</p>
+        </div>
+      </div>
+
       {/* Footer */}
-      <footer className="mt-12 py-8 text-center text-gray-600 text-sm" style={{borderTop: '1px solid transparent', background: 'linear-gradient(#030712, #030712) padding-box, linear-gradient(to right, #7c3aed33, #3b82f633, #ec489933) border-box'}}>
+      <footer className="mt-4 py-8 text-center text-gray-600 text-sm" style={{borderTop: '1px solid transparent', background: 'linear-gradient(#030712, #030712) padding-box, linear-gradient(to right, #7c3aed33, #3b82f633, #ec489933) border-box'}}>
         <p>{tr.footer(tools.length)}</p>
       </footer>
 
