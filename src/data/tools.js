@@ -31,7 +31,7 @@ export const categoryList = [
 export const tools = [
   // ── IMAGES ──────────────────────────────────────────────────
   {
-    id: 1, name: 'Leonardo.ai', category: 'image', icon: '🎨', sponsored: true,
+    id: 1, name: 'Leonardo.ai', category: 'image', icon: '🎨',
     badgeRu: '150 кред/день', badgeEn: '150 credits/day',
     descRu: 'Генерация изображений высокого качества. 150 бесплатных кредитов каждый день.',
     descEn: 'High-quality image generation. 150 free credits every day.',
@@ -71,7 +71,7 @@ export const tools = [
     url: 'https://playground.com',
   },
   {
-    id: 6, name: 'Canva AI', category: 'image', icon: '🎪', sponsored: true,
+    id: 6, name: 'Canva AI', category: 'image', icon: '🎪',
     badgeRu: 'Бесплатный план', badgeEn: 'Free plan',
     descRu: 'Дизайн + AI генерация в одном. Шаблоны, логотипы, посты для соцсетей.',
     descEn: 'Design + AI generation in one. Templates, logos, social media posts.',
@@ -721,7 +721,7 @@ export const tools = [
 
   // ── DESIGN ──────────────────────────────────────────────────
   {
-    id: 47, name: 'Figma', category: 'design', icon: '🖊️', sponsored: true,
+    id: 47, name: 'Figma', category: 'design', icon: '🖊️',
     badgeRu: 'Бесплатный план', badgeEn: 'Free plan',
     descRu: 'Лучший инструмент для UI/UX дизайна. AI функции: автолейаут, стили.',
     descEn: 'Best UI/UX design tool. AI features: auto-layout, style filling.',
