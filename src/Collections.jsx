@@ -7,8 +7,9 @@ export default function Collections({ lang = 'ru', isDark = true }) {
     <div className="min-h-screen" style={{background: 'linear-gradient(135deg, #0f0a1e 0%, #030712 50%, #0a0f1e 100%)'}}>
       {/* Header */}
       <div className="relative overflow-hidden">
-        <div className="absolute -top-32 -left-32 w-96 h-96 bg-purple-600/20 rounded-full blur-3xl pointer-events-none" />
-        <div className="absolute top-10 -right-20 w-80 h-80 bg-pink-600/15 rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute -top-40 -left-40 w-[500px] h-[500px] bg-purple-600/30 rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute top-0 -right-20 w-[400px] h-[400px] bg-pink-600/20 rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute top-20 left-1/2 w-[300px] h-[300px] bg-blue-600/15 rounded-full blur-3xl pointer-events-none" />
         <div className="relative max-w-4xl mx-auto px-4 pt-14 pb-10 text-center">
           <Link to="/" className="inline-flex items-center gap-2 text-purple-400 hover:text-purple-300 text-sm mb-6 transition-colors">
             ← {lang === 'ru' ? 'Назад' : 'Back'}
