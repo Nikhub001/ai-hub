@@ -396,7 +396,7 @@ export default function App() {
               title="Copy address"
             >📋</button>
           </div>
-          <p className={`text-xs mt-1.5 ${isDark ? 'text-gray-600' : 'text-gray-400'}`}>BEP20</p>
+          <p className={`text-xs mt-1.5 ${isDark ? 'text-gray-600' : 'text-gray-400'}`}>BEP20 / Polygon</p>
         </div>
       </div>
 
