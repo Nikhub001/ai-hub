@@ -216,8 +216,13 @@ export default function App() {
 
       {/* Categories */}
       <div className={`sticky top-0 z-10 theme-catbar backdrop-blur-md border-b ${isDark ? 'bg-gray-950/90 border-gray-800/50' : 'bg-slate-50/95 border-gray-200'}`}>
+        <div className="relative max-w-7xl mx-auto">
+          {/* fade left */}
+          <div className={`pointer-events-none absolute left-0 top-0 bottom-0 w-10 z-10 ${isDark ? 'bg-gradient-to-r from-gray-950/90 to-transparent' : 'bg-gradient-to-r from-slate-50/95 to-transparent'}`} />
+          {/* fade right */}
+          <div className={`pointer-events-none absolute right-0 top-0 bottom-0 w-10 z-10 ${isDark ? 'bg-gradient-to-l from-gray-950/90 to-transparent' : 'bg-gradient-to-l from-slate-50/95 to-transparent'}`} />
         <div
-          className="max-w-7xl mx-auto px-4 py-3 flex gap-2 overflow-x-auto"
+          className="px-4 py-3 flex gap-2 overflow-x-auto"
           ref={catsRef}
           style={{scrollbarWidth:'none'}}
         >
@@ -234,6 +239,7 @@ export default function App() {
               {cat.label}
             </button>
           ))}
+        </div>
         </div>
       </div>
 
