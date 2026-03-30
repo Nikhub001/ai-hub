@@ -1,4 +1,4 @@
-import { useState, useMemo, useEffect } from 'react'
+import { useState, useMemo, useEffect, useRef } from 'react'
 import { tools, categoryList } from './data/tools'
 import { t } from './i18n'
 
@@ -64,8 +64,17 @@ export default function App() {
   const [favorites, setFavorites] = useState(() => JSON.parse(localStorage.getItem('freeai_favs') || '[]'))
   const [subEmail, setSubEmail] = useState('')
   const [subSubmitted, setSubSubmitted] = useState(false)
+  const catsRef = useRef(null)
 
   const tr = t[lang]
+
+  useEffect(() => {
+    const el = catsRef.current
+    if (!el) return
+    const handler = (e) => { e.preventDefault(); el.scrollLeft += e.deltaY }
+    el.addEventListener('wheel', handler, { passive: false })
+    return () => el.removeEventListener('wheel', handler)
+  }, [])
 
   useEffect(() => {
     localStorage.setItem('freeai_favs', JSON.stringify(favorites))
@@ -199,8 +208,8 @@ export default function App() {
       <div className="sticky top-0 z-10 bg-gray-950/90 backdrop-blur-md border-b border-gray-800/50">
         <div
           className="max-w-7xl mx-auto px-4 py-3 flex gap-2 overflow-x-auto"
+          ref={catsRef}
           style={{scrollbarWidth:'none'}}
-          onWheel={e => { e.preventDefault(); e.currentTarget.scrollLeft += e.deltaY }}
         >
           {categories.map(cat => (
             <button
