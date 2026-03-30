@@ -125,6 +125,9 @@ export default function App() {
   useEffect(() => {
     document.documentElement.classList.toggle('light', !isDark)
     localStorage.setItem('freeai_theme', isDark ? 'dark' : 'light')
+    let meta = document.querySelector('meta[name="theme-color"]')
+    if (!meta) { meta = document.createElement('meta'); meta.name = 'theme-color'; document.head.appendChild(meta) }
+    meta.content = isDark ? '#0a0618' : '#f1f5f9'
   }, [isDark])
 
   useEffect(() => {
