@@ -9,7 +9,7 @@ function ToolCard({ tool, lang, favorites, onToggleFav, isDark, likes, onLike, o
 
   return (
     <div
-      className={`card-anim group theme-card border rounded-2xl p-5 flex flex-col gap-3 transition-all duration-200 hover:-translate-y-1 hover:shadow-xl hover:shadow-purple-500/30 hover:border-purple-500/60 cursor-pointer ${
+      className={`card-anim group theme-card border rounded-2xl p-5 flex flex-col gap-3 transition-all duration-200 hover:-translate-y-1 hover:shadow-xl hover:shadow-purple-500/30 hover:border-purple-500/60 cursor-pointer min-w-0 ${
         tool.sponsored
           ? isDark
             ? 'bg-gradient-to-br from-gray-800/70 to-gray-900/70 border-yellow-500/30 shadow-yellow-500/10 shadow-md'
@@ -20,11 +20,11 @@ function ToolCard({ tool, lang, favorites, onToggleFav, isDark, likes, onLike, o
       }`}
       onClick={() => onOpenModal(tool)}
     >
-      <div className="flex items-start justify-between gap-3">
-        <div className="flex items-center gap-3">
-          <span className="text-3xl">{tool.icon}</span>
-          <div>
-            <div className="flex items-center gap-2">
+      <div className="flex items-start justify-between gap-2 min-w-0">
+        <div className="flex items-center gap-3 min-w-0 flex-1">
+          <span className="text-3xl flex-shrink-0">{tool.icon}</span>
+          <div className="min-w-0">
+            <div className="flex items-center gap-2 flex-wrap">
               <h3 className={`font-bold text-base group-hover:text-purple-400 transition-colors leading-tight theme-text ${isDark ? 'text-white' : 'text-gray-900'}`}>
                 {tool.name}
               </h3>
@@ -46,17 +46,17 @@ function ToolCard({ tool, lang, favorites, onToggleFav, isDark, likes, onLike, o
             </div>
           </div>
         </div>
-        <div className="flex items-center gap-1 flex-shrink-0">
+        <div className="flex items-center gap-0.5 flex-shrink-0">
           <button
             onClick={e => { e.stopPropagation(); onLike(tool.id) }}
-            className="flex items-center gap-1 text-sm leading-none p-1 hover:scale-110 transition-transform text-gray-500 hover:text-pink-400"
+            className="flex items-center gap-0.5 text-sm leading-none p-1 hover:scale-110 transition-transform text-gray-500 hover:text-pink-400"
             aria-label="Like"
           >
             👍{likeCount > 0 && <span className="text-xs font-semibold">{likeCount}</span>}
           </button>
           <button
             onClick={e => { e.stopPropagation(); onToggleFav(tool.id) }}
-            className="text-lg leading-none p-1 hover:scale-125 transition-transform"
+            className="text-base leading-none p-1 hover:scale-125 transition-transform"
             aria-label="Toggle favorite"
           >
             {isFav ? '❤️' : '🤍'}
@@ -66,7 +66,7 @@ function ToolCard({ tool, lang, favorites, onToggleFav, isDark, likes, onLike, o
             target="_blank"
             rel="noopener noreferrer"
             onClick={e => e.stopPropagation()}
-            className="text-gray-500 hover:text-purple-400 transition-colors text-lg mt-0.5 p-1"
+            className="text-gray-500 hover:text-purple-400 transition-colors text-base p-1"
             aria-label="Open tool"
           >↗</a>
         </div>
@@ -177,7 +177,7 @@ export default function App() {
   }
 
   return (
-    <div className={`min-h-screen theme-bg ${isDark ? 'bg-gray-950 text-white' : 'bg-slate-100 text-gray-900'}`}>
+    <div className={`min-h-screen overflow-x-hidden theme-bg ${isDark ? 'bg-gray-950 text-white' : 'bg-slate-100 text-gray-900'}`}>
       {/* Header */}
       <div className="relative overflow-hidden">
         <div className={`absolute inset-0 theme-hdr-grad ${isDark ? 'bg-gradient-to-br from-purple-950 via-gray-950 to-blue-950' : ''} pointer-events-none`} />
