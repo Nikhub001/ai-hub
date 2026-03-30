@@ -11,6 +11,7 @@ export const categoryList = [
   { id: 'search',       color: 'from-teal-500 to-cyan-500' },
   { id: 'design',       color: 'from-fuchsia-500 to-pink-500' },
   { id: 'productivity', color: 'from-amber-500 to-yellow-500' },
+  { id: 'interior',    color: 'from-orange-500 to-amber-500' },
 ]
 
 export const tools = [
@@ -851,6 +852,72 @@ export const tools = [
     tagsRu: ['выделение', 'суммаризация', 'расширение'], tagsEn: ['highlight', 'summary', 'extension'],
     url: 'https://glasp.co',
   },
+  // ── INTERIOR / ARCHITECTURE ──────────────────────────────────
+  {
+    id: 104, name: 'RoomGPT', category: 'interior', icon: '🛋️', vpn: true,
+    badgeRu: '100% бесплатно', badgeEn: '100% free',
+    descRu: 'Загрузи фото комнаты — AI сделает профессиональный редизайн интерьера за секунды.',
+    descEn: 'Upload a room photo — AI creates a professional interior redesign in seconds.',
+    tagsRu: ['редизайн', 'фото', 'интерьер'], tagsEn: ['redesign', 'photo', 'interior'],
+    url: 'https://roomgpt.io',
+  },
+  {
+    id: 105, name: 'AI Room Planner', category: 'interior', icon: '📐',
+    badgeRu: '100% бесплатно', badgeEn: '100% free',
+    descRu: 'Планировка комнат с помощью AI. Опиши комнату текстом — получи готовый план.',
+    descEn: 'Room planning with AI. Describe the room in text — get a ready floor plan.',
+    tagsRu: ['планировка', 'текст', 'план'], tagsEn: ['floor plan', 'text', 'layout'],
+    url: 'https://airoomplanner.com',
+  },
+  {
+    id: 106, name: 'Planner 5D', category: 'interior', icon: '🏠',
+    badgeRu: 'Бесплатный план', badgeEn: 'Free plan',
+    descRu: '3D планировка квартиры и дома онлайн. Расставляй мебель, выбирай стены, материалы.',
+    descEn: '3D apartment and home planner online. Arrange furniture, choose walls and materials.',
+    tagsRu: ['3D', 'мебель', 'квартира'], tagsEn: ['3D', 'furniture', 'apartment'],
+    url: 'https://planner5d.com',
+  },
+  {
+    id: 107, name: 'Roomstyler', category: 'interior', icon: '🪑',
+    badgeRu: '100% бесплатно', badgeEn: '100% free',
+    descRu: 'Онлайн 3D дизайн комнат. Огромная библиотека мебели и декора. Без регистрации.',
+    descEn: 'Online 3D room design. Huge furniture and decor library. No registration needed.',
+    tagsRu: ['3D', 'декор', 'онлайн'], tagsEn: ['3D', 'decor', 'online'],
+    url: 'https://roomstyler.com',
+  },
+  {
+    id: 108, name: 'Coohom', category: 'interior', icon: '🏡',
+    badgeRu: 'Бесплатный план', badgeEn: 'Free plan',
+    descRu: '3D дизайн дома и интерьера. AI подбирает цвета и стили. Рендер за секунды.',
+    descEn: '3D home and interior design. AI picks colors and styles. Renders in seconds.',
+    tagsRu: ['рендер', 'дом', 'стили'], tagsEn: ['render', 'home', 'styles'],
+    url: 'https://coohom.com',
+  },
+  {
+    id: 109, name: 'Maket.ai', category: 'interior', icon: '🏗️', vpn: true,
+    badgeRu: 'Бесплатный план', badgeEn: 'Free plan',
+    descRu: 'Генерация планировок этажей из текстового описания. Для архитекторов и дизайнеров.',
+    descEn: 'Generate floor plans from text description. For architects and designers.',
+    tagsRu: ['этажи', 'архитектура', 'план'], tagsEn: ['floor plans', 'architecture', 'layout'],
+    url: 'https://maket.ai',
+  },
+  {
+    id: 110, name: 'Getfloorplan', category: 'interior', icon: '📏',
+    badgeRu: 'Бесплатный план', badgeEn: 'Free plan',
+    descRu: 'Загрузи фото или скетч — AI создаёт 2D и 3D план этажа с размерами.',
+    descEn: 'Upload a photo or sketch — AI creates 2D and 3D floor plan with dimensions.',
+    tagsRu: ['скетч', '2D/3D', 'размеры'], tagsEn: ['sketch', '2D/3D', 'dimensions'],
+    url: 'https://getfloorplan.com',
+  },
+  {
+    id: 111, name: 'Interior AI', category: 'interior', icon: '✨', vpn: true,
+    badgeRu: 'Бесплатный план', badgeEn: 'Free plan',
+    descRu: 'Виртуальный стейджинг и редизайн интерьера. 40+ стилей: модерн, скандинав, лофт.',
+    descEn: 'Virtual staging and interior redesign. 40+ styles: modern, Scandinavian, loft.',
+    tagsRu: ['стейджинг', 'стили', 'виртуальный'], tagsEn: ['staging', 'styles', 'virtual'],
+    url: 'https://interiorai.com',
+  },
+
   {
     id: 103, name: 'Reclaim AI', category: 'productivity', icon: '📅', vpn: true,
     badgeRu: 'Бесплатный план', badgeEn: 'Free plan',

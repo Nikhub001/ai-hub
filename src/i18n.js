@@ -27,6 +27,7 @@ export const t = {
       search: '🔍 Поиск',
       design: '🎨 Дизайн',
       productivity: '⚡ Продуктивность',
+      interior: '🏠 Интерьер',
     },
   },
   en: {
@@ -57,6 +58,7 @@ export const t = {
       search: '🔍 Search',
       design: '🎨 Design',
       productivity: '⚡ Productivity',
+      interior: '🏠 Interior',
     },
   },
 }
