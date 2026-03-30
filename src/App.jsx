@@ -2,10 +2,11 @@ import { useState, useMemo, useEffect, useRef } from 'react'
 import { tools, categoryList } from './data/tools'
 import { t } from './i18n'
 
-function ToolCard({ tool, lang, favorites, onToggleFav, isDark, likes, onLike, onOpenModal }) {
+function ToolCard({ tool, lang, favorites, onToggleFav, isDark, likes, myLikes, onLike, onOpenModal }) {
   const tr = t[lang]
   const isFav = favorites.includes(tool.id)
   const likeCount = likes[tool.id] || 0
+  const iLiked = myLikes.includes(tool.id)
 
   return (
     <div
@@ -49,10 +50,11 @@ function ToolCard({ tool, lang, favorites, onToggleFav, isDark, likes, onLike, o
         <div className="flex items-center gap-0.5 flex-shrink-0">
           <button
             onClick={e => { e.stopPropagation(); onLike(tool.id) }}
-            className="flex items-center gap-0.5 text-sm leading-none p-1 hover:scale-110 transition-transform text-gray-500 hover:text-pink-400"
+            className={`flex items-center gap-0.5 text-sm leading-none p-1 hover:scale-110 transition-transform ${iLiked ? 'text-pink-400' : 'text-gray-500 hover:text-pink-400'}`}
             aria-label="Like"
+            title={iLiked ? 'Убрать лайк' : 'Нравится'}
           >
-            👍{likeCount > 0 && <span className="text-xs font-semibold">{likeCount}</span>}
+            {iLiked ? '👍' : '👍'}{likeCount > 0 && <span className="text-xs font-semibold">{likeCount}</span>}
           </button>
           <button
             onClick={e => { e.stopPropagation(); onToggleFav(tool.id) }}
@@ -92,7 +94,8 @@ export default function App() {
   const [noVpnOnly, setNoVpnOnly] = useState(false)
   const [favorites, setFavorites] = useState(() => JSON.parse(localStorage.getItem('freeai_favs') || '[]'))
   const [isDark, setIsDark] = useState(() => localStorage.getItem('freeai_theme') !== 'light')
-  const [likes, setLikes] = useState(() => JSON.parse(localStorage.getItem('freeai_likes') || '{}'))
+  const [likeCounts, setLikeCounts] = useState(() => JSON.parse(localStorage.getItem('freeai_likes') || '{}'))
+  const [myLikes, setMyLikes] = useState(() => JSON.parse(localStorage.getItem('freeai_liked') || '[]'))
   const [sortByLikes, setSortByLikes] = useState(false)
   const [selectedTool, setSelectedTool] = useState(null)
 
@@ -112,8 +115,12 @@ export default function App() {
   }, [favorites])
 
   useEffect(() => {
-    localStorage.setItem('freeai_likes', JSON.stringify(likes))
-  }, [likes])
+    localStorage.setItem('freeai_likes', JSON.stringify(likeCounts))
+  }, [likeCounts])
+
+  useEffect(() => {
+    localStorage.setItem('freeai_liked', JSON.stringify(myLikes))
+  }, [myLikes])
 
   useEffect(() => {
     document.documentElement.classList.toggle('light', !isDark)
@@ -132,7 +139,14 @@ export default function App() {
   }
 
   const handleLike = (id) => {
-    setLikes(prev => ({ ...prev, [id]: (prev[id] || 0) + 1 }))
+    const alreadyLiked = myLikes.includes(id)
+    if (alreadyLiked) {
+      setMyLikes(prev => prev.filter(x => x !== id))
+      setLikeCounts(prev => ({ ...prev, [id]: Math.max(0, (prev[id] || 0) - 1) }))
+    } else {
+      setMyLikes(prev => [...prev, id])
+      setLikeCounts(prev => ({ ...prev, [id]: (prev[id] || 0) + 1 }))
+    }
   }
 
   const setLanguage = (l) => {
@@ -163,7 +177,7 @@ export default function App() {
       )
     }
     if (sortByLikes) {
-      result = [...result].sort((a, b) => (likes[b.id] || 0) - (likes[a.id] || 0))
+      result = [...result].sort((a, b) => (likeCounts[b.id] || 0) - (likeCounts[a.id] || 0))
     }
     return result
   }, [activeCategory, search, lang, noVpnOnly, favorites, sortByLikes, likes])
@@ -333,7 +347,8 @@ export default function App() {
                 favorites={favorites}
                 onToggleFav={toggleFav}
                 isDark={isDark}
-                likes={likes}
+                likes={likeCounts}
+                myLikes={myLikes}
                 onLike={handleLike}
                 onOpenModal={setSelectedTool}
               />
@@ -418,9 +433,9 @@ export default function App() {
             <div className="flex items-center gap-3">
               <button
                 onClick={() => handleLike(selectedTool.id)}
-                className="flex items-center gap-1.5 px-4 py-2 rounded-xl border text-sm font-medium transition-all text-pink-400 border-pink-500/40 hover:bg-pink-500/10"
+                className={`flex items-center gap-1.5 px-4 py-2 rounded-xl border text-sm font-medium transition-all ${myLikes.includes(selectedTool.id) ? 'text-pink-400 border-pink-500/60 bg-pink-500/10' : 'text-gray-400 border-gray-600 hover:text-pink-400 hover:border-pink-500/40 hover:bg-pink-500/10'}`}
               >
-                👍 {likes[selectedTool.id] || 0}
+                👍 {likeCounts[selectedTool.id] || 0}
               </button>
               <a
                 href={selectedTool.url}
